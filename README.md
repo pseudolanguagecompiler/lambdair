@@ -1,7 +1,12 @@
 # Practical Pseudocode Compiler in Lean 4
 
-This project implements a student-friendly pseudocode compiler using Lean 4's type system for verified semantics. Parses clean pseudocode → typed AST → denotational semantics → verified Lean/C/JS codegen. Designed for classroom use with future dialect expansion.
+**My approach**: This pseudocode compilers needs to be realistic. Tools like ANTLR or Jupyter kernels already handle multi-dialect input better than I could in Lean 4 for the first phase (to achieve around 90% of functionality). Lean shines at verification and proofs, not parsing—**so focus on one clean grammar first with solid semantics, deferring universality, but with design to support multiple grammars as work in this area is emerging**. 
 
+Parses clean pseudocode → typed AST → denotational semantics → verified Lean/C/JS codegen.
+
+Some of the users may actually be students learning to code as a first step toward getting community around this.
+
+## Grammar 
 
 ## To build and run:
 # lake build
@@ -79,7 +84,4 @@ Expected: Prints 5,4,3,2,1 with verified semantics.
 1. Verified Semantics: Lean 4 proves semantic preservation
 2. Clean Grammar: LL(1) parsing suitable for pedagogy  
 3. Extensible Design: Dialect registry for future work
-4. Practical Scope: 90% student pseudocode coverage
-
-Future Work: Multi-grammar dispatch, optimization passes, Jupyter integration.
-Single maintainer implementable in 6 weeks. Focuses on Lean's verification strengths.
+4. Practical Scope: 90% pseudocode coverage
