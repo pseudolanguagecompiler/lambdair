@@ -10,7 +10,17 @@ Universal grammars allow head direction while maintaining core hierarchies, mirr
 
 **Pipeline**: Pseudocode → `UniversalParser` → `UniversalIR` (AST+Semantics) → `ToLean` codegen
 
+## AST as Semantic Input
+
+Denotational semantics operates directly on ASTs defined in the AST folder, defining valuation functions that recursively assign denotations (e.g. values or functions) to each AST node based on node substructures, aligning UniversalIR's hierarchical properties for universal parsing of pseudocode.
+
+This treats UniversalIR as the syntactic domain, transforming the pseudocode ASTs into semantic domains (booleans, numbers) without surface details enabling multi-grammar support because of the shared AST/UniversalIR.
+
+Denotational functions can be composed.
+
 ## Formal Properties
+
+Denotational semantics and formal verification via Lean4 are written in a notebook ready theorems for rapidy development of the pseudo compiler semantics  wz
 
 -- Prove in Proofs/Semantics.lean or Jupyter:
 theorem assign_correct : ⟦assign x e⟧ s x = some (⟦e⟧ s)
