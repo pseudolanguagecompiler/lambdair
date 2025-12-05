@@ -6,7 +6,7 @@
 
 ---
 
-`Pseudo-idea for the pseudocode for the pseudo_c compiler`
+` Proto-framework for universal verified compilation or in laymens terms it's the Pseudo-idea for the pseudocode for the pseudo_c compiler`
 
 # PseudoC - Practical Pseudocode Compiler in Lean 4
 
