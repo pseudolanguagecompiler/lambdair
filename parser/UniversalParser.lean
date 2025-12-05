@@ -3,32 +3,60 @@ import Ast.UniversalIR
 
 namespace UniversalParser
 
--- Parser combinators for UniversalIR
-def pID : Parser String := letter *> (letter <|> digit)* |>.map String.ofList
+open Parser Char
 
-def pNumber : Parser UniversalIR.Expr := nat.map UniversalIR.Expr.num
-def pAtom : Parser UniversalIR.Expr := 
-  pNumber <|> pID.map UniversalIR.Expr.var <|> (symbol "(" *> pExpr <* symbol ")")
+-- ID: letter followed by alphanum
+def pID : Parser String := 
+  letter *> (alpha <|> digit)* |>.map fun ls => String.mk' ls.toArray
 
-def pExpr : Parser UniversalIR.Expr := 
-  -- Left-associative binary ops (simplified)
-  pAtom >>= λleft => 
-    (symbol "+" *> pAtom).orElse (symbol "-" *> pAtom).map (λright op => 
-      UniversalIR.Expr.binOp (if op == "+" then .add else .sub) left right) 
-    |>.star >>= λops => 
-      ops.foldl left (λacc (op, right) => UniversalIR.Expr.binOp op acc right)
+-- Number → Expr.num
+def pNumber : Parser UniversalIR.Expr := 
+  nat.map UniversalIR.Expr.num
 
-def pStatement : Parser UniversalIR.Stmt := 
-  choice [
-    ("set" *> pID <* symbol ":=" <*> pExpr <* symbol ";").map (λ⟨x, e⟩ => UniversalIR.Stmt.assign x e),
-    ("print" *> pExpr <* symbol ";").map UniversalIR.Stmt.print,
-    -- if/while simplified for now
-    pure (UniversalIR.Stmt.print (UniversalIR.Expr.num 0))
-  ]
+-- Atom: number | id | ( expr )
+def pAtom : Parser UniversalIR.Expr := pNumber <|> 
+  pID.map UniversalIR.Expr.var <|> 
+  (satisfy (· == '(') *> pExpr <* satisfy (· == ')'))
+
+-- Binary expressions (left-associative)
+def pExpr : Parser UniversalIR.Expr := do
+  let mut left ← pAtom
+  while true do
+    if (← test "+") then
+      let right ← pAtom
+      left := UniversalIR.Expr.binOp .add left right
+    else if (← test "-") then
+      let right ← pAtom
+      left := UniversalIR.Expr.binOp .sub left right
+    else if (← test ">") then
+      let right ← pAtom
+      left := UniversalIR.Expr.binOp .gt left right
+    else
+      break left
+  pure left
+
+-- Statements
+def pStatement : Parser UniversalIR.Stmt := choice [
+  -- set x := expr ;
+  do
+    ← keyword "set"
+    let x ← pID
+    ← symbol ":="
+    let e ← pExpr
+    ← symbol ";"
+    pure (UniversalIR.Stmt.set x e),
+  
+  -- print expr ;
+  do
+    ← keyword "print"
+    let e ← pExpr
+    ← symbol ";"
+    pure (UniversalIR.Stmt.print e)
+]
 
 def pProgram : Parser (List UniversalIR.Stmt) := many pStatement
 
 def parseProgram (input : String) : Except String (List UniversalIR.Stmt) := 
-  Parser.runParser pProgram input |>.toExcept (λe => s!"Parse error at {e}")
+  runParser pProgram input "" |>.toExcept toString
 
-end UniversalParser
+end UniversalParser [web:101][web:102]
