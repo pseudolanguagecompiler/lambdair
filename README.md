@@ -1,5 +1,5 @@
 
-# λIR: Lambda IR, the Verified Compilation of Human Pseudocode
+# λIR: Lambda IR, the Verified Compilation of Human Pseudocode into Intermediate Language
 
 **Status**: ✅ Core pipeline compiles & runs. **Bootstrap theorems WIP** (Week 7).
 **Self-hosting**: `pseudo_c_boostrap.pseudo` → Lean4 compiler **(parser/codegen verified)**.
@@ -32,7 +32,7 @@ Input: set x := 5; while x > 0 do ...
 PseudoC parsed successfully
 AST: [While (> x 0) [Print x, Set x (x - 1)]]
 
-# How λIR works: The PseudoC backend
+# How λIR works
 
 
 ` Proto-framework for universal verified compilation or in laymens terms it's the Pseudo-idea for the pseudocode for the pseudo_c compiler`
