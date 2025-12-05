@@ -3,12 +3,22 @@
 
 **Status**: ✅ Compiles & runs  
 **Command**: `lake build && lake exe pseudo_c test.pseudo`
-
 ---
+
+## Quick Start
+
+Install Lean4 to compile, run the test file (test.pseudo) which contains some sample pseudo-code you should see this output if everything works (feel free to submit a PR if it does not)
+
+Input: set x := 5; while x > 0 do ...
+✓ PseudoC parsed successfully
+AST: [While (> x 0) [Print x, Set x (x - 1)]]
+
+# PseudoC - Practical Pseudocode Compiler 
+
 
 ` Proto-framework for universal verified compilation or in laymens terms it's the Pseudo-idea for the pseudocode for the pseudo_c compiler`
 
-# PseudoC - Practical Pseudocode Compiler in Lean 4
+
 
 ## 🎓 Autoformalization Bootstrap** (Boostrap.lean)
 
