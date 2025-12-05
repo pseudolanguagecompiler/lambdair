@@ -1,8 +1,9 @@
 
-# Pseudocode Compiler in Lean 4 
+# PseudoC: The Lean4 Pseudocode Compiler 
 
-**Status**: ✅ Compiles & runs  
-**Command**: `lake build && lake exe pseudoc test.pseudo`
+**Status**: ✅ Core pipeline compiles & runs. **Bootstrap theorems WIP** (Week 7).
+**Self-hosting**: `pseudo_c_boostrap.pseudo` → Lean4 compiler **(parser/codegen verified)**.
+
 ---
 
 ## Quick Start
