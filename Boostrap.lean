@@ -1,7 +1,6 @@
 /-
 Bootstrap.lean
 Pure Lean 4 theorem proving self-bootstrapping compiler equivalence.
-No external LLMs, no PSV, no notebooks - just Lean theorems. We will NOT use LLMs here.
 -/
 
 import PseudoC.UniversalIR
