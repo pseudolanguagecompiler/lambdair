@@ -8,6 +8,17 @@
 
 `Pseudo-idea for the pseudocode for the pseudo_c compiler`
 
+# PseudoC - Practical Pseudocode Compiler in Lean 4
+
+## 🎓 Autoformalization Bootstrap** (Coming Soon)
+
+**`Bootstrap.ipynb`** will demonstrate autoformalization of `Main.pseudo` → Lean 4 using Process-Supervised Verification (PSV): Claude generates candidates, Lean 4 compiler errors guide refinement, final verified compiler self-hosts (`lake exe AutoPseudoC test.pseudo` produces identical output). Proves `⟦Autoformalized⟧ ≡ ⟦Original⟧` with notebook walkthrough. [web:31]
+
+---
+
+## Overview
+
+
 ## 🌐 Overview
 
 This project implements a **semantics-verified pseudocode compiler** written in **Lean 4**, designed to decouple *surface parsing* from *semantic interpretation*. Its long-term goal is to provide a **Universal Intermediate Representation (UniversalIR)** capable of capturing the structure and meaning of pseudocode written in multiple grammar styles.
@@ -170,7 +181,7 @@ UniversalIR solves this by providing a *shared semantic domain* for all grammars
 | 4 | Error recovery + symbol tables |
 | 5 | C/JS backend codegen |
 | 6 | Formal proofs + test suite |
-| 7 | Boostrap pseudo code compiler in pseudocode |
+| 7 | Boostrap pseudo code compiler using autoformalization via theorem notebook|
 ---
 
 ## 🧩 Example Theorems (in progress)
