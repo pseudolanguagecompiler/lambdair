@@ -219,7 +219,7 @@ Expected: Prints countdown 5 → 1 and outputs generated Lean 4 code equivalent 
 ## 🧩 Future Work
 
 - **Verified bytecode VM** with denotational equivalence proof  
-- Multi-language frontends (C-style, Pythonic pseudocode)  see AST folder
+- Multi-language frontends (C-style, Pythonic pseudocode)  see AST folder. We want to be at the edge of human language inspried grammars
 - Compiler tools 
 
 ---
