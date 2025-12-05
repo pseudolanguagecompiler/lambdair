@@ -33,12 +33,6 @@ The inspiration for this project is to answer a couple questions
 
 Bootstrap.lean defines a pure Lean 4 theorem proving that a bootstrapped pseudocompiler (BootstrappedCompiler) has identical semantics to the original. Lean verifies ⟦Bootstrapped⟧ ≡ ⟦Original⟧ through structural equivalence. Run lake build and lake exe pseudoc test.pseudo uses the theorem-extracted verified compiler.
 
-No external dependencies. Pure dependent types + theorem extraction. Self-hosts immediately.
-
-1. lake build          # Rebuilds with Bootstrap.lean theorems
-2. lake exe pseudoc    # Now dispatches to verified BootstrappedCompiler
-   test.pseudo
-
 ---
 
 ## Full Boostrap sequence
@@ -226,7 +220,7 @@ UniversalIR solves this by providing a *shared semantic domain* for all grammars
 
 | Week | Milestone |
 |------|------------|
-| 1 | Parser + UniversalIR + Main (✅ done) |
+| 1 | Parser + UniversalIR + Main |
 | 2 | Full `if`/`while` parsing |
 | 3 | Type checker + VerifiedIR |
 | 4 | Error recovery + symbol tables |
