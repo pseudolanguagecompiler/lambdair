@@ -23,6 +23,7 @@ The inspiration for this project is to answer a couple questions
 1. Is it possible to use pseudo code to teach algorithms and CS to students and have a tool that will generate executable multi-paradigm code?
 2. Is it theoretically possible to boostrap a pseudocode compiler IN psueodcode?
 3. Once the pseudocode compiler is built, is it possible to use it to answer reesearch questions aroun grammar agnostic termination?
+4. Is it possible to completely remove hallucinations from AI-generated code by treating it as pseudocode?
 
 ## 🎓 Autoformalization Bootstrap** (Boostrap.lean)
 
